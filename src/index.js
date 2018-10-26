@@ -5,6 +5,9 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'semantic-ui-css/semantic.min.css';
 import AppRouter from './AppRouter'
+import AppoloClient from 'apollo-boost'
+import gql from 'graphql-tag'
+
 
 ReactDOM.render(<AppRouter />, document.getElementById('root'));
 
