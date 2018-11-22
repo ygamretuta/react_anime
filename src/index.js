@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
-import 'semantic-ui-css/semantic.min.css';
-import AppRouter from './AppRouter'
-import AppoloClient from 'apollo-boost'
-import gql from 'graphql-tag'
+
+import AppRouter from './AppRouter';
+import 'bootstrap/dist/css/bootstrap.css';
 
 
 ReactDOM.render(<AppRouter />, document.getElementById('root'));

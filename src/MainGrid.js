@@ -1,14 +1,21 @@
 import _ from 'lodash'
 import React from 'react'
-import { Grid, Image } from 'semantic-ui-react'
+import { Container, Row, Col } from 'reactstrap';
 
 const columns = _.times(12, i => (
-
-  <Grid.Column key={i}>
-    <Image src='images/image.png' />
-  </Grid.Column>
+  <Col xs="3" key={i}>
+    <img alt="myimg" src="images/image.png" class="img-fluid" />
+  </Col>
 ))
 
-const MainGrid = () => <Grid>{columns}</Grid>
+const MainGrid = () => {
+  return(
+    <Container>
+      <Row>
+        {columns}
+      </Row>
+    </Container>
+  )
+}
 
 export default MainGrid
