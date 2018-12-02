@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import './App.css';
-import MainGrid from './MainGrid'
+import './App.scss';
+import MainGrid from './MainGrid/MainGrid'
 
 class App extends Component {
   render() {
