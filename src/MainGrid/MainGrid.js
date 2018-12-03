@@ -7,48 +7,64 @@ import {
   Button, 
   Form, 
   FormGroup, 
-  Label, 
   Input, 
-  FormText,
   InputGroup,
   InputGroupAddon
 } from 'reactstrap';
 
 import './MainGrid.scss';
 
-const columns = _.times(12, i => (
-  <Col xs="3" key={i}>
-    <img alt="myimg" src="images/image.png" className="img-fluid" />
-  </Col>
-))
+export default class MainGrid extends React.Component {
 
-const handleSearch = (event) => {
-  console.log('Search Clicked');
-};
+  constructor(props) {
+    super(props);
+    this.state = {searchValue: ''};
+  }
 
-const MainGrid = () => {
-  return(
-    <Container>
-      <Row>
-        <Col xs="12">
-          <Form className="mt-3">
-            <FormGroup>
-              <InputGroup>
-                <Input type="search" name="search" id="search" placeholder="search for an anime" className="noOutline"/>
-                <InputGroupAddon addonType="append">
-                  <Button color="secondary" onClick={handleSearch}>Search</Button>
-                </InputGroupAddon>
-              </InputGroup>
-            </FormGroup>
-          </Form>
-        </Col>
-      </Row>
+  handleChange = (event) => {
+    this.setState({searchValue: event.target.value});
+  }
 
-      <Row>
-        {columns}
-      </Row>
-    </Container>
-  )
+  columns = _.times(12, i => (
+    <Col xs="3" key={i}>
+      <img alt="myimg" src="images/image.png" className="img-fluid" />
+    </Col>
+  ))
+
+  handleSubmit = (event) => {
+    alert('Form submitted');
+    event.preventDefault();
+  }
+
+  render() {
+    return(
+      <Container>
+        <Row>
+          <Col xs="12">
+            <Form className="mt-3" onSubmit={this.handleSubmit}>
+              <FormGroup>
+                <InputGroup>
+                  <Input 
+                    type="search" 
+                    name="search" 
+                    id="search" 
+                    placeholder="search for an anime" 
+                    value={this.state.searchValue}
+                    onChange={this.handleChange}
+                    className="noOutline"/>
+                  <InputGroupAddon addonType="append">
+                    <Button color="secondary" type="submit" className="noOutline">Search</Button>
+                  </InputGroupAddon>
+                </InputGroup>
+              </FormGroup>
+            </Form>
+          </Col>
+        </Row>
+  
+        <Row>
+          {this.columns}
+        </Row>
+      </Container>
+    )
+  }
 }
-
-export default MainGrid
