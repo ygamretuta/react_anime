@@ -22,6 +22,10 @@ const columns = _.times(12, i => (
   </Col>
 ))
 
+const handleSearch = (event) => {
+  console.log('Search Clicked');
+};
+
 const MainGrid = () => {
   return(
     <Container>
@@ -31,7 +35,9 @@ const MainGrid = () => {
             <FormGroup>
               <InputGroup>
                 <Input type="search" name="search" id="search" placeholder="search for an anime" className="noOutline"/>
-                <InputGroupAddon addonType="append"><Button color="secondary">Search</Button></InputGroupAddon>
+                <InputGroupAddon addonType="append">
+                  <Button color="secondary" onClick={handleSearch}>Search</Button>
+                </InputGroupAddon>
               </InputGroup>
             </FormGroup>
           </Form>
