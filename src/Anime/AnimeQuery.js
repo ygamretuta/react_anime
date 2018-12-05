@@ -8,27 +8,42 @@ export default class AnimeQuery extends Component {
     return (
       <Query
         query={gql`
-          query ($id: Int) { 
-            Media (id: $id, type: ANIME) {
-              id
-              title {
-                romaji
-                english
-                native
+          query ($id: Int, $page: Int, $perPage: Int, $search: String) { 
+            Page(page: $page, perPage: $perPage) {
+              pageInfo {
+                total
+                currentPage
+                lastPage
+                hasNextPage
+                perPage
+              }
+
+              media (id: $id, search: $search) {
+                id 
+                title {
+                  romaji
+                  english
+                  native
+                }
               }
             }
           }
         `}
 
-        variables={{id: '15125'}}
+        variables={{search: "Fate", page: 1, perPage: 6}}
       >
         {({ loading, error, data }) => {
           if (loading) return <p>Loading...</p>;
           if (error) return <p>Error :(</p>;
 
+          
+          const listAnime = data.Page.media.map((anime) => 
+            <li key={anime.id}>Romaji: {anime.title.romaji}</li>
+          );
+
           return (
             <ul>
-              <li>Romaji: {data.Media.title.romaji}</li>
+              {listAnime}
             </ul>
           );
         }} 

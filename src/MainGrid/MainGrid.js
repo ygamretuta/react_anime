@@ -21,15 +21,15 @@ export default class MainGrid extends React.Component {
     this.state = {searchValue: ''};
   }
 
-  handleChange = (event) => {
-    this.setState({searchValue: event.target.value});
-  }
-
   columns = _.times(12, i => (
     <Col xs="3" key={i}>
       <img alt="myimg" src="images/image.png" className="img-fluid" />
     </Col>
   ))
+  
+  handleChange = (event) => {
+    this.setState({searchValue: event.target.value});
+  }
 
   handleSubmit = (event) => {
     alert('Form submitted');
