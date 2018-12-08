@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import MainGrid from '../MainGrid/MainGrid'
-import AnimeQuery from  '../Anime/AnimeQuery'
 import './Home.css'
 
 class Home extends Component {
@@ -8,7 +7,6 @@ class Home extends Component {
     return (
       <>
         <MainGrid />
-        <AnimeQuery />
       </>
     );
   }

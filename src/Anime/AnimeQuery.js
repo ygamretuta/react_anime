@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
+import PropTypes from 'prop-types'
 
 export default class AnimeQuery extends Component {
 
@@ -30,7 +31,7 @@ export default class AnimeQuery extends Component {
           }
         `}
 
-        variables={{search: "Fate", page: 1, perPage: 6}}
+        variables={{search: this.props.search, page: 1, perPage: 6}}
       >
         {({ loading, error, data }) => {
           if (loading) return <p>Loading...</p>;
@@ -50,4 +51,12 @@ export default class AnimeQuery extends Component {
       </Query>
     )
   }
+}
+
+AnimeQuery.propTypes = {
+  search: PropTypes.string
+}
+
+AnimeQuery.defaultProps = {
+  search: ''
 }

@@ -12,6 +12,9 @@ import {
   InputGroupAddon
 } from 'reactstrap';
 
+import AnimeQuery from  '../Anime/AnimeQuery';
+
+
 import './MainGrid.scss';
 
 export default class MainGrid extends React.Component {
@@ -63,6 +66,12 @@ export default class MainGrid extends React.Component {
   
         <Row>
           {this.columns}
+        </Row>
+
+        <Row>
+          <Col xs="12">
+            <AnimeQuery search={this.state.searchValue} />
+          </Col>
         </Row>
       </Container>
     )
