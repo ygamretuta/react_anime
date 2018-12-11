@@ -1,5 +1,6 @@
 import _ from 'lodash'
 import React from 'react'
+import ReactDOM from 'react-dom'
 import { 
   Container, 
   Row, 
@@ -31,12 +32,13 @@ export default class MainGrid extends React.Component {
   ))
   
   handleChange = (event) => {
-    this.setState({searchValue: event.target.value});
+    /* TODO: do something on search value change */
   }
 
   handleSubmit = (event) => {
-    alert('Form submitted');
     event.preventDefault();
+    const data = new FormData(event.target);
+    this.setState({searchValue: data.get('search')});
   }
 
   render() {
@@ -52,7 +54,6 @@ export default class MainGrid extends React.Component {
                     name="search" 
                     id="search" 
                     placeholder="search for an anime" 
-                    value={this.state.searchValue}
                     onChange={this.handleChange}
                     className="noOutline"/>
                   <InputGroupAddon addonType="append">
@@ -69,7 +70,7 @@ export default class MainGrid extends React.Component {
         </Row>
 
         <Row>
-          <Col xs="12">
+          <Col xs="12" id="query-container">
             <AnimeQuery search={this.state.searchValue} />
           </Col>
         </Row>
