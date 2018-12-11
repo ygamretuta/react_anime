@@ -24,12 +24,6 @@ export default class MainGrid extends React.Component {
     super(props);
     this.state = {searchValue: ''};
   }
-
-  columns = _.times(12, i => (
-    <Col xs="3" key={i}>
-      <img alt="myimg" src="images/image.png" className="img-fluid" />
-    </Col>
-  ))
   
   handleChange = (event) => {
     /* TODO: do something on search value change */
@@ -64,7 +58,7 @@ export default class MainGrid extends React.Component {
             </Form>
           </Col>
         </Row>
-        
+
         <AnimeQuery search={this.state.searchValue} />
       </Container>
     )
