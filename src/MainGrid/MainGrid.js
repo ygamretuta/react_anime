@@ -64,16 +64,8 @@ export default class MainGrid extends React.Component {
             </Form>
           </Col>
         </Row>
-  
-        <Row>
-          {this.columns}
-        </Row>
-
-        <Row>
-          <Col xs="12" id="query-container">
-            <AnimeQuery search={this.state.searchValue} />
-          </Col>
-        </Row>
+        
+        <AnimeQuery search={this.state.searchValue} />
       </Container>
     )
   }
